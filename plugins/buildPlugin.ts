@@ -43,7 +43,7 @@ class BuildObj {
         files: ['**'],
         extends: null,
         productName: 'WorkCare',
-        appId: 'WorkCare.desktop',
+        appId: 'com.workcare.desktop',
         asar: true,
         nsis: {
           oneClick: true,
@@ -53,10 +53,22 @@ class BuildObj {
           createStartMenuShortcut: true,
           shortcutName: 'WorkCareDesktop',
         },
-        publish: [{ provider: 'generic', url: 'http://localhost:5500/' }],
       },
+      publish: null,
       project: process.cwd(),
     }
     return builder.build(options)
+  }
+}
+
+export function buildPlugin() {
+  return {
+    name: 'build-plugin',
+    closeBundle: () => {
+      const buildObj = new BuildObj()
+      buildObj.buildMain()
+      buildObj.preparePackageJson()
+      buildObj.buildInstaller()
+    },
   }
 }
