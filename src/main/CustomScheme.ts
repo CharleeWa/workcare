@@ -1,7 +1,6 @@
-// src\main\CustomScheme.ts
 import fs from 'node:fs'
 import path from 'node:path'
-import { protocol } from 'electron'
+import { app, protocol } from 'electron'
 
 // 为自定义的app协议提供特权
 const schemeConfig = { standard: true, supportFetchAPI: true, bypassCSP: true, corsEnabled: true, stream: true }
@@ -38,7 +37,7 @@ export class CustomScheme {
         pathName = 'index.html'
         extension = '.html'
       }
-      const tarFile = path.join(__dirname, pathName)
+      const tarFile = path.join(app.getAppPath(), pathName)
       return new Response(fs.readFileSync(tarFile), {
         headers: { 'content-type': this.getMimeType(extension) },
         status: 200,
