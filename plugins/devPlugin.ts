@@ -41,3 +41,25 @@ export function devPlugin() {
     },
   }
 }
+
+export function getReplacer() {
+  const externalModels = ['os', 'fs', 'path', 'events', 'child_process', 'crypto', 'http', 'buffer', 'url', 'better-sqlite3', 'knex']
+  const result: { [key: string]: () => { find: RegExp, code: string } } = {}
+
+  for (const item of externalModels) {
+    result[item] = () => ({
+      find: /^${item}$/,
+      code: `import ${item} from '${item}';\nexport { ${item} as default }`,
+    })
+  }
+
+  result.electron = () => {
+    const electronModules = ['clipboard', 'ipcRenderer', 'nativeImage', 'shell', 'webFrame'].join(',')
+    return {
+      find: /^electron$/,
+      code: `import {${electronModules}} from 'electron';\nexport {${electronModules}}`,
+    }
+  }
+
+  return result
+}
