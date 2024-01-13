@@ -22,7 +22,7 @@ app.whenReady().then(() => {
 
   if (process.argv[2]) {
     mainWindow.loadURL(process.argv[2])
-    mainWindow.webContents.openDevTools({ mode: 'undocked' })
+    // mainWindow.webContents.openDevTools({ mode: 'undocked' })
   }
   else {
     CustomScheme.registerScheme()
