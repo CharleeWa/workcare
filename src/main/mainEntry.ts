@@ -8,6 +8,10 @@ let mainWindow: BrowserWindow
 
 app.whenReady().then(() => {
   const config = {
+    width: 800,
+    height: 600,
+    minWidth: 800,
+    minHeight: 400,
     webPreferences: {
       nodeIntegration: true,
       webSecurity: false,
