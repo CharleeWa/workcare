@@ -3,6 +3,8 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
+  "description": "An app for managing health tasks",
+  "author": "Charlie Wang <18888351756@163.com>",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
