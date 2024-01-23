@@ -1,5 +1,11 @@
 <script setup lang="ts">
+import { ipcRenderer } from 'electron'
+import { onMounted } from 'vue'
 import Sidebar from '@/components/Sidebar.vue'
+
+onMounted(() => {
+  ipcRenderer.invoke('showWindow')
+})
 </script>
 
 <template>

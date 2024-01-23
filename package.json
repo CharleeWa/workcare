@@ -31,6 +31,7 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3",
     "vite": "^5.0.11",
+    "vite-plugin-optimizer": "^1.4.3",
     "vue": "^3.4.13",
     "vue-router": "^4.2.5",
     "vue-tsc": "^1.8.27"

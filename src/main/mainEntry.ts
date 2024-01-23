@@ -1,8 +1,13 @@
 import process from 'node:process'
 import { BrowserWindow, app } from 'electron'
 import { CustomScheme } from './CustomScheme'
+import { CommonWindowEvent } from './CommonWindowEvent'
 
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true'
+
+app.on('browser-window-created', (_e, win) => {
+  CommonWindowEvent.regWinEvent(win)
+})
 
 let mainWindow: BrowserWindow
 
@@ -12,6 +17,7 @@ app.whenReady().then(() => {
     height: 600,
     minWidth: 800,
     minHeight: 400,
+    show: false,
     webPreferences: {
       nodeIntegration: true,
       webSecurity: false,
@@ -26,10 +32,13 @@ app.whenReady().then(() => {
 
   if (process.argv[2]) {
     mainWindow.loadURL(process.argv[2])
-    // mainWindow.webContents.openDevTools({ mode: 'undocked' })
+    mainWindow.webContents.openDevTools({ mode: 'undocked' })
   }
   else {
     CustomScheme.registerScheme()
     mainWindow.loadURL(`app://index.html`)
   }
+
+  CommonWindowEvent.listen()
+  CommonWindowEvent.regWinEvent(mainWindow)
 })

@@ -1,11 +1,12 @@
 import path from 'node:path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { devPlugin } from './plugins/devPlugin'
+import optimizer from 'vite-plugin-optimizer'
+import { devPlugin, getReplacer } from './plugins/devPlugin'
 import { buildPlugin } from './plugins/buildPlugin'
 
 export default defineConfig({
-  plugins: [devPlugin(), vue()],
+  plugins: [optimizer(getReplacer()), devPlugin(), vue()],
 
   resolve: {
     alias: {

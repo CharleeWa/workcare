@@ -55,6 +55,9 @@ devDependencies:
   vite:
     specifier: ^5.0.11
     version: 5.0.11
+  vite-plugin-optimizer:
+    specifier: ^1.4.3
+    version: 1.4.3
   vue:
     specifier: ^3.4.13
     version: 3.4.13(typescript@5.3.3)
@@ -4426,6 +4429,10 @@ packages:
       extsprintf: 1.4.1
     dev: true
     optional: true
+
+  /vite-plugin-optimizer@1.4.3:
+    resolution: {integrity: sha512-m1AFakemDxSNIwxsTYykBFuQxkKJLI8207RNAg33N5km2aE29cP+Jt41xbfdrALOU2VKYWGFlBz64GMbIser4A==}
+    dev: true
 
   /vite@5.0.11:
     resolution: {integrity: sha512-XBMnDjZcNAw/G1gEiskiM1v6yzM4GE5aMGvhWTlHAYYhxb7S3/V1s3m2LDHa8Vh6yIWYYB0iJwsEaS523c4oYA==}
