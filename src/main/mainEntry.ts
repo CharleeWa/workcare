@@ -5,6 +5,8 @@ import { CommonWindowEvent } from './CommonWindowEvent'
 
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true'
 
+app.commandLine.appendSwitch('disable-http-cache')
+
 app.on('browser-window-created', (_e, win) => {
   CommonWindowEvent.regWinEvent(win)
 })
